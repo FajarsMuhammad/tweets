@@ -1,0 +1,44 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.5.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'jacoco'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.sample'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.hibernate:hibernate-core:5.4.3.Final")
+	implementation("mysql:mysql-connector-java:5.1.4")
+	
+	annotationProcessor("com.google.auto.value:auto-value:1.6.3")
+	implementation("com.google.auto.value:auto-value-annotations:1.6.3")
+	
+	implementation("org.flywaydb:flyway-core:5.2.4")
+	
+	testImplementation("org.junit.jupiter:junit-jupiter-api:5.3.1")
+	testImplementation("org.junit.jupiter:junit-jupiter-params:5.3.1")
+	testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.1")
+}
