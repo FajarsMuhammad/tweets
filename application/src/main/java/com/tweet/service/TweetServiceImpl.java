@@ -39,6 +39,7 @@ public class TweetServiceImpl implements TweetService {
                 "https://api.twitter.com/1.1/tweets/search/"
                         + searchParams.getPeriod() + " /my_env_name.json",
                 ModelTweet[].class);
+       
         return Arrays.stream(modelTweets).map(m -> {
             Tweet tweet = new Tweet();
             tweet.setUser(m.user().id());
@@ -51,5 +52,11 @@ public class TweetServiceImpl implements TweetService {
     @Transactional
     public List<Tweet> saveTweets(List<Tweet> tweets) {
         return tweetRepository.saveAll(tweets);
+    }
+    
+    @Override
+    @Transactional
+    public Tweet saveTweet(Tweet tweets) {
+        return tweetRepository.save(tweets);
     }
 }

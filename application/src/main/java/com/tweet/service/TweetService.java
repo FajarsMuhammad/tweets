@@ -19,4 +19,6 @@ public interface TweetService {
 
     List<Tweet> fetchTweets(TweetSearchParams searchParams);
 
+    Tweet saveTweet(Tweet tweets);
+
 }

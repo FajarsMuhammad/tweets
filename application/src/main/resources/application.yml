@@ -24,3 +24,7 @@ spring:
     locations:
       - classpath:migration/mysql
     out-of-order: true
+    
+rest:
+  job:
+    cron: 50 * * * * *
